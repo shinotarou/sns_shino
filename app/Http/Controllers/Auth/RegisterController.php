@@ -80,6 +80,7 @@ class RegisterController extends Controller
         if($request->isMethod('post')){
             $data = $request->input();
 // バリデーター関数をここ入れる。入れ方は下の＄thisと同じ。
+            $this->validator($date);
             $this->create($data);
             return redirect('added');
         }
