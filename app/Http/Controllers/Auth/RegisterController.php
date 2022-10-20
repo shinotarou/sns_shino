@@ -51,9 +51,26 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'username' => 'required|string|min:4|max:255',
             'mail' => 'required|string|email|min:4|max:255|unique:users',
-            'password' => 'required|string|alpha_num|min:4|max:12|confirmed|unique:password',
-            'password-confirm' => 'required|string|alpha_num|min:4|max:12|unique:password',
-        ]);
+            'password' => 'required|string|alpha_num|min:4|max:12|confirmed',
+            'password_confirmation' => 'required|string|alpha_num|min:4|max:12',
+        ],[
+            'username.required' => '名前は必須です。',
+            'username.min' => '名前は4文字以上です。',
+            'username.max' => '名前は255文字以下です。',
+            'mail.required' => 'メールアドレスは必須です。',
+            'mail.email' => 'メールアドレスの形式が違います。',
+            'mail.min' => 'メールアドレスは4文字以上です。',
+            'mail.max' => 'メールアドレスは255文字以下です。',
+            'mail.unique' => 'このメールアドレスはすでに登録してあります',
+            'password.required' => 'パスワードは必須です。',
+            'password.alpha_num' => 'パスワードは英数字です。',
+            'password.min' => 'パスワードは4文字以上です。',
+            'password.max' => 'パスワードは12文字以下です。',
+            'password.confirmed' => 'パスワードと一致してません',
+            'password_confirmation.required' => '入力してください。',
+
+
+        ])->validate();
     }
 
     /**
@@ -80,7 +97,7 @@ class RegisterController extends Controller
         if($request->isMethod('post')){
             $data = $request->input();
 // バリデーター関数をここ入れる。入れ方は下の＄thisと同じ。
-            $this->validator($date);
+            $this->validator($data);
             $this->create($data);
             return redirect('added');
         }
