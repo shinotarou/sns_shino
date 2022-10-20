@@ -49,9 +49,10 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'username' => 'required|string|max:255',
-            'mail' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:4|confirmed',
+            'username' => 'required|string|min:4|max:255',
+            'mail' => 'required|string|email|min:4|max:255|unique:users',
+            'password' => 'required|string|alpha_num|min:4|max:12|confirmed|unique:password',
+            'password-confirm' => 'required|string|alpha_num|min:4|max:12|unique:password',
         ]);
     }
 
@@ -78,7 +79,7 @@ class RegisterController extends Controller
     public function register(Request $request){
         if($request->isMethod('post')){
             $data = $request->input();
-// バリデーター関数をここ入れる。
+// バリデーター関数をここ入れる。入れ方は下の＄thisと同じ。
             $this->create($data);
             return redirect('added');
         }
