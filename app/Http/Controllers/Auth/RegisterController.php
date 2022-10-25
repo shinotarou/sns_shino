@@ -99,7 +99,7 @@ class RegisterController extends Controller
 // バリデーター関数をここ入れる。入れ方は下の＄thisと同じ。
             $this->validator($data);
             $this->create($data);
-            return redirect('added');
+            return redirect('added')->with('username',$data['username']);
         }
         return view('auth.register');
     }
