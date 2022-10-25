@@ -1,6 +1,11 @@
 @extends('layouts.login')
 
 @section('content')
-<h2>機能を実装していきましょう。</h2>
+
+<form action="/tweet" method="post">
+  @csrf
+  <input type="text" name="tweet" max="150" placeholder="何をつぶやこうかな...">
+  <input type="submit" value="投稿">
+</form>
 
 @endsection
