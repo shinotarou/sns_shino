@@ -32,12 +32,11 @@ Route::get('/added', 'Auth\RegisterController@added');
 //ログイン中のページ
 Route::get('/top','PostsController@index');
 
+Route::post('/tweet','PostsController@tweet');
+
 Route::get('/profile','UsersController@profile');
 
 Route::get('/search','UsersController@index');
 
 Route::get('/follow-list','PostsController@index');
 Route::get('/follower-list','PostsController@index');
-
-
-
