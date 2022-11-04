@@ -8,4 +8,11 @@
   <input type="submit" value="投稿">
 </form>
 
+
+@foreach($posts as $post)
+{{$post->username}}
+{{$post->posts}}
+{{$post->created_at}}
+@endforeach
+
 @endsection
