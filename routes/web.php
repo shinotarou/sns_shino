@@ -42,6 +42,5 @@ Route::get('/follow-list','PostsController@index');
 Route::get('/follower-list','PostsController@index');
 //フォローする機能
 Route::post('/follow/create','FollowsController@create');
-Route::post('/follow/delete','FollowsController@delete');
-
 //フォロー解除機能
+Route::post('/follow/delete','FollowsController@delete');
