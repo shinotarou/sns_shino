@@ -28,7 +28,7 @@
     @endif
   </div>
   @else
-
+      <!-- なにも表示させない処理 -->
   @endif
 @endforeach
 
