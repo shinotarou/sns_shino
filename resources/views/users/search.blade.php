@@ -12,7 +12,24 @@
   <div>
   <p><img src="{{ asset('images/dawn.png')}}">
   {{$user->username}}</p>
+  @if($auth_id != $user->id)
+    @if($followings->contains('follow',$user->id))
+    <form action="follow/delete" method="post">
+        @csrf
+        <input type="hidden" name="id" value="{{$user->id}}">
+        <input type="submit" value="フォローをはずす">
+      </form>
+    @else
+      <form action="/follow/create" method="post">
+        @csrf
+        <input type="hidden" name="id" value="{{$user->id}}">
+        <input type="submit" value="フォローする">
+    </form>
+    @endif
   </div>
+  @else
+
+  @endif
 @endforeach
 
 
