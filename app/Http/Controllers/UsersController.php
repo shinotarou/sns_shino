@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 
 class UsersController extends Controller
 {
@@ -11,6 +12,7 @@ class UsersController extends Controller
         return view('users.profile');
     }
     public function search(){
-        return view('users.search');
+        $users = DB::table('users')->get();
+        return view('users.search',compact('users'));
     }
 }
