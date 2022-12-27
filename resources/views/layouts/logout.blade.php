@@ -8,6 +8,7 @@
     <title></title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/logout.css">
+    <link rel="stylesheet" href="{{ asset('/css/style.css')  }}" >
     <!--スマホ,タブレット対応-->
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <!--サイトのアイコン指定-->
@@ -21,8 +22,8 @@
 </head>
 <body>
     <header>
-        <h1><img src="images/main_logo.png"></h1>
-        <p>Social Network Service</p>
+        <h1 style="text-align: center;"><img src="images/main_logo.png"></h1>
+        <p style="text-align: center;" >Social Network Service</p>
     </header>
     <div id="container">
         @yield('content')

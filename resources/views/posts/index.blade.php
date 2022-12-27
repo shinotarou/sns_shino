@@ -8,11 +8,13 @@
   <input type="submit" value="投稿">
 </form>
 
-
 @foreach($posts as $post)
-{{$post->username}}
-{{$post->posts}}
-{{$post->created_at}}
+<div class="tweet-frame">
+    <img src="{{ asset( 'images/'.$post->images )}}" style="width:100px;height:auto;">
+    {{$post->username}}<br><br>
+    {{$post->posts}}<br>
+    {{$post->created_at}}<br><br>
+</div>
 @endforeach
 
 @endsection

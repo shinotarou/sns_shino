@@ -11,9 +11,12 @@ class PostsController extends Controller
     public function index(){
         $posts = DB::table('posts')
         ->join('users','posts.user_id','=','users.id')
+        ->leftJoin('follows','posts.user_id','=','follows.follow')
         ->where('users.id',Auth::id())
+        ->orWhere('follows.follower',Auth::id())
         ->select('users.images','users.username','posts.posts','posts.created_at as created_at')
         ->get();
+
         return view('posts.index',compact('posts'));
     }
 

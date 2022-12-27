@@ -28,18 +28,23 @@ Route::post('/register', 'Auth\RegisterController@register');
 
 Route::get('/added', 'Auth\RegisterController@added');
 
+Route::get('/logout','Auth\LoginController@logout');
+
 
 //ログイン中のページ
 Route::get('/top','PostsController@index');
 
 Route::post('/tweet','PostsController@tweet');
 
-Route::get('/profile','UsersController@profile');
+Route::get('/myprofile','UsersController@myprofile');
+Route::get('/profile/{user}','UsersController@profile');
+
+Route::post('/newprofile','usersController@newprofile');
 
 Route::get('/search','UsersController@search');
 
 Route::get('/follow-list','FollowsController@followList');
-Route::get('/follower-list','FollowsController@followerList');
+Route::get('/follower-list','FollowsController@followerList')->name('follower-list');
 //フォローする機能
 Route::post('/follow/create','FollowsController@create');
 //フォロー解除機能

@@ -10,26 +10,26 @@
 
 @foreach($users as $user)
   <div>
-  <p><img src="{{ asset('images/dawn.png')}}">
-  {{$user->username}}</p>
-  @if($auth_id != $user->id)
-    @if($followings->contains('follow',$user->id))
-    <form action="follow/delete" method="post">
-        @csrf
-        <input type="hidden" name="id" value="{{$user->id}}">
-        <input type="submit" value="フォローをはずす">
+    <p><img src="{{ asset('images/'.$user->images)}}" style="width:100px;height:auto;">
+    {{$user->username}}</p>
+    @if($auth_id != $user->id)
+      @if($followings->contains('follow',$user->id))
+      <form action="follow/delete" method="post">
+          @csrf
+          <input type="hidden" name="id" value="{{$user->id}}">
+          <input type="submit" value="フォローをはずす">
+        </form>
+      @else
+        <form action="/follow/create" method="post">
+          @csrf
+          <input type="hidden" name="id" value="{{$user->id}}">
+          <input type="submit" value="フォローする">
       </form>
-    @else
-      <form action="/follow/create" method="post">
-        @csrf
-        <input type="hidden" name="id" value="{{$user->id}}">
-        <input type="submit" value="フォローする">
-    </form>
-    @endif
+      @endif
   </div>
-  @else
+@else
       <!-- なにも表示させない処理 -->
-  @endif
+@endif
 @endforeach
 
 
